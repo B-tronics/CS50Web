@@ -33,11 +33,11 @@ nav > ul {
 }
 
 #search_input > img {
-  width: 50%;
+  width: 30em;
 }
 
 #search_input > input[type="text"] {
-  width: 60%;
+  width: 30em;
   line-height: 2em;
   font-size: 1em;
   border-radius: 1em;
@@ -46,6 +46,5 @@ nav > ul {
 
 #search_input > input[type="submit"] {
   width: 10em;
+  height: 2em;
 }
-
-/* TODO: Write queries for image and input fields to scale properly. */
