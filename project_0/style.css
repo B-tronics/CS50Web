@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+nav > ul {
+  height: 2em;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5em;
+  margin: 0 1em;
+  list-style-type: none;
+}
+
+#search {
+  display: flex;
+  height: 80%;
+  align-items: center;
+}
+
+#search_input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+#search_input > img {
+  width: 50%;
+}
+
+#search_input > input[type="text"] {
+  width: 60%;
+  line-height: 2em;
+  font-size: 1em;
+  border-radius: 1em;
+  padding-left: 0.7em;
+}
+
+#search_input > input[type="submit"] {
+  width: 10em;
+}
+
+/* TODO: Write queries for image and input fields to scale properly. */
