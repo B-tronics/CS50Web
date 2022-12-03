@@ -6,6 +6,7 @@
 
 body {
   height: 100vh;
+  font-family: "Roboto", system-ui, sans-serif;
 }
 
 nav > ul {
@@ -42,9 +43,11 @@ nav > ul {
   font-size: 1em;
   border-radius: 1em;
   padding-left: 0.7em;
+  font-family: inherit;
 }
 
 #search_input > input[type="submit"] {
   width: 10em;
   height: 2em;
+  font-family: inherit;
 }
