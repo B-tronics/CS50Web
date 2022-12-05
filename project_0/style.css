@@ -46,7 +46,7 @@ nav > ul {
   font-family: inherit;
 }
 
-#search_input > input[type="submit"] {
+.google_search {
   width: 10em;
   height: 2em;
   font-family: inherit;
@@ -82,4 +82,9 @@ td {
 
 #advanced_submit > input {
   height: 2em;
+  background-color: blue;
+  border-color: blue;
+  border-radius: 0.25em;
+  color: white;
+  padding: 0.3em;
 }
