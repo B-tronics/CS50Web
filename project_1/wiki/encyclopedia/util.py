@@ -35,3 +35,9 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def filter_query(list_of_items: list, query: str) -> list:
+    # create a list of substrings based on the query
+    filtered_list = [item for item in list_of_items if query in item.casefold()]
+
+    return filtered_list
