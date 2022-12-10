@@ -54,6 +54,10 @@ def edit(request, entry):
         "title": entry
     })
 
+def random(request):
+    all_entry = util.list_entries()
+    return entry(request, choice(all_entry))
+
 def save_page(request: object, edit: bool):
     all_entry = util.list_entries()
     title = request.POST["title"]
