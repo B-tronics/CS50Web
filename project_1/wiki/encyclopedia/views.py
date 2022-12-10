@@ -19,7 +19,9 @@ def entry(request, title):
         raise Http404()
     else:
         return render(request, "encyclopedia/entry.html", {
-            "entry": markdown2.markdown(markdown2.markdown(content))
+            "entry": markdown2.markdown(markdown2.markdown(content)),
+            "title": title
+        })
 
 def search(request):
     if request.method == 'POST':
@@ -37,6 +39,11 @@ def search(request):
         "entries": util.list_entries()
     })
 
+def new_page(request):
+    if request.method == 'POST':
+        return save_page(request, False)
+    else:
+        return render(request, "encyclopedia/newpage.html")
 
 def page_not_found_error_handler(request, exception=None):
     return HttpResponse(render(request, "encyclopedia/404.html"), status=404)
