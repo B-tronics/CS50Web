@@ -45,5 +45,18 @@ def new_page(request):
     else:
         return render(request, "encyclopedia/newpage.html")
 
+def save_page(request: object, edit: bool):
+    all_entry = util.list_entries()
+    title = request.POST["title"]
+    if (title in all_entry) and not edit:
+        return render(request, "encyclopedia/newpage.html", {
+            "name_exists": True
+        })
+    else:
+        content = request.POST["content"]
+        util.save_entry(title, content)
+        return entry(request, title)
+
+
 def page_not_found_error_handler(request, exception=None):
     return HttpResponse(render(request, "encyclopedia/404.html"), status=404)
