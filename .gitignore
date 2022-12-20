@@ -2,6 +2,9 @@
 .venv/
 .env
 
+# IDE
+.vscode
+
 # binaries
 __pycache__/
 *.pyc
