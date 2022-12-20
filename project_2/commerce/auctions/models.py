@@ -6,5 +6,22 @@ class User(AbstractUser):
     pass
 
 class Auctions(models.Model):
+    """Describes an auction.
+
+        It represents:
+         # title: name of the offering
+         # description: description of the offering
+         # date: the date of creation
+         # user: the user who owns the offering
+         # starting_bid: the amount from where the bidding starts
+         # current_bid: the highest bid
+    """
+
+    class Meta:
+        verbose_name = "auction",
+        verbose_name_plural = "auctions"
+
     title = models.CharField(max_length=100, unique=True)
     description = models.TextField(null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
