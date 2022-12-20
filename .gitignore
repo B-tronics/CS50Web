@@ -1,7 +1,10 @@
 # venv
 .venv/
+.env
 
+# binaries
 __pycache__/
 *.pyc
 
-.env
+# database
+*.sqlite3
