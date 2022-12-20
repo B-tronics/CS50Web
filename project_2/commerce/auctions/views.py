@@ -69,8 +69,10 @@ def create_listing(request):
     form = forms.CreateListingForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
+            # TODO: move the save logic to a new function
             data = models.Auctions()
             data.title = form.cleaned_data["title"]
+            data.description = form.cleaned_data["description"]
             data.save()
             return HttpResponseRedirect(reverse("index"))
     else:
