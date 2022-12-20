@@ -6,3 +6,9 @@ class CreateListingForm(forms.Form):
         "aria-describedby": "titleHelp",
         "placeholder": "Title"
     }))
+    description = forms.CharField(label="Add description", widget=forms.Textarea(attrs={
+        "class": "form-control",
+        "aria-describedby": "descriptionHelp",
+        "placeholder": "Descripton",
+        "rows": "10",
+    }))
