@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -73,6 +73,7 @@ def create_listing(request):
             data = models.Auctions()
             data.title = form.cleaned_data["title"]
             data.description = form.cleaned_data["description"]
+            data.user = get_user(request)
             data.save()
             return HttpResponseRedirect(reverse("index"))
     else:
