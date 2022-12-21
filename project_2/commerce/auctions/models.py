@@ -5,6 +5,7 @@ from django.db import models
 class User(AbstractUser):
     pass
 
+
 class Auctions(models.Model):
     """Describes an auction.
 
@@ -29,3 +30,15 @@ class Auctions(models.Model):
     current_bid = models.IntegerField()
 
 
+class Bids(models.Model):
+    """Describes all bids.
+
+        It represents:
+         # user: the owner of the bid
+         # bid: the bid of the user
+         # auction: the auction where the bid belongs
+    """
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bid = models.IntegerField()
+    auction = models.ForeignKey(Auctions, on_delete=models.CASCADE)
