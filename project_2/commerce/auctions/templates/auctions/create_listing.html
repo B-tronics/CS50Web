@@ -14,7 +14,19 @@
     <div class="form-group">
       {{ form.description.label_tag }}
       {{ form.description }}
-      <small id="descriptionHelp" class="form-text text-muted">Text based description of the listing.</small>
+      <small id="startingBidHelp" class="form-text text-muted">Text based description of the listing.</small>
+    </div>
+
+    <div class="form-group">
+      {{ form.starting_bid.label_tag }}
+      {{ form.starting_bid }}
+      <small id="startingBidHelp" class="form-text text-muted">Amount in $, where the auction starts.</small>
+    </div>
+
+    <div class="form-group">
+      {{ form.picture.label_tag }}
+      {{ form.picture }}
+      <small id="pictureHelp" class="form-text text-muted">Add a link to a picture if you like.</small>
     </div>
     
     <button type="submit" class="btn btn-primary">Submit</button>
