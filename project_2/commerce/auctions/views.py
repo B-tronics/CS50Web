@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from . import utilities
 from .models import User
 from . import forms
 from . import models
@@ -69,12 +70,10 @@ def create_listing(request):
     form = forms.CreateListingForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
-            # TODO: move the save logic to a new function
-            data = models.Auctions()
-            data.title = form.cleaned_data["title"]
-            data.description = form.cleaned_data["description"]
-            data.user = get_user(request)
-            data.save()
+            record_data = {
+                "title": form.cleaned_data["title"], "description": form.cleaned_data["description"], "user": get_user(request), "starting_bid": form.cleaned_data["starting_bid"], "current_bid": form.cleaned_data["starting_bid"]}
+            record = utilities.create_new_auction_record(record_data)
+            record.save()
             return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/create_listing.html", {
