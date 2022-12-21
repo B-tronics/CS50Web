@@ -1,17 +1,20 @@
 from django.contrib.auth import authenticate, login, logout, get_user
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
 from . import utilities
 from .models import User
 from . import forms
-from . import models
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    data = utilities.retrieve_data_for_index_view()
+    return render(request, "auctions/index.html", {
+        "data": data
+    })
 
 
 def login_view(request):
@@ -65,13 +68,19 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-
+@login_required(login_url="/login")
 def create_listing(request):
     form = forms.CreateListingForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             record_data = {
-                "title": form.cleaned_data["title"], "description": form.cleaned_data["description"], "user": get_user(request), "starting_bid": form.cleaned_data["starting_bid"], "current_bid": form.cleaned_data["starting_bid"]}
+                "title": form.cleaned_data["title"],
+                "description": form.cleaned_data["description"],
+                "user": get_user(request),
+                "starting_bid": form.cleaned_data["starting_bid"],
+                "current_bid": form.cleaned_data["starting_bid"],
+                "picture": form.cleaned_data["picture"]
+            }
             record = utilities.create_new_auction_record(record_data)
             record.save()
             return HttpResponseRedirect(reverse("index"))
