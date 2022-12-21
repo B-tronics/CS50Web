@@ -25,3 +25,7 @@ class Auctions(models.Model):
     description = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    starting_bid = models.IntegerField()
+    current_bid = models.IntegerField()
+
+
