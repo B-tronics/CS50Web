@@ -28,6 +28,7 @@ class Auctions(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     starting_bid = models.IntegerField()
     current_bid = models.IntegerField()
+    picture = models.URLField(null=True)
 
 
 class Bids(models.Model):
