@@ -12,3 +12,13 @@ class CreateListingForm(forms.Form):
         "placeholder": "Descripton",
         "rows": "10",
     }))
+    starting_bid = forms.IntegerField(label="Add starting bid", widget=forms.NumberInput(attrs={
+        "class": "form-control",
+        "aria-describedby": "startingBidHelp",
+        "placeholder": "0"
+    }))
+
+    picture = forms.URLField(label="Add a pictue (Optional)", widget=forms.URLInput(attrs={
+        "class": "form-control",
+        "aria-describedby": "pictureHelp",
+    }))
