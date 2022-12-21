@@ -1,5 +1,6 @@
 from django import forms
 
+
 class CreateListingForm(forms.Form):
     title = forms.CharField(label="Add title", max_length=100, widget=forms.TextInput(attrs={
         "class": "form-control",
@@ -18,7 +19,7 @@ class CreateListingForm(forms.Form):
         "placeholder": "0"
     }))
 
-    picture = forms.URLField(label="Add a pictue (Optional)", widget=forms.URLInput(attrs={
+    picture = forms.URLField(label="Add a pictue (Optional)", required=False, widget=forms.URLInput(attrs={
         "class": "form-control",
         "aria-describedby": "pictureHelp",
     }))
