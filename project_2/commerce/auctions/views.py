@@ -8,6 +8,7 @@ from django.urls import reverse
 from . import utilities
 from .models import User
 from . import forms
+from . import models
 
 
 def index(request):
@@ -16,6 +17,32 @@ def index(request):
         "data": data
     })
 
+@login_required(login_url="/login")
+def listing(request, id):
+    form = forms.BiddingForm(request.POST)
+    if request.method == "POST":
+        bid = int(request.POST["bid"])
+        if (utilities.bid_is_valid(bid, id)):
+            auction = models.Auctions.objects.get(pk=id)
+            auction.current_bid = bid
+            new_bid_record = {
+                "user": get_user(request),
+                "bid": bid,
+                "auction": auction,
+            }
+            new_bid = models.Bids(**new_bid_record)
+            new_bid.save()
+            auction.save()
+
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        data = utilities.retrieve_data_for_index_view().get(pk=id)
+        bid_count = utilities.retrieve_record_count(models.Bids)
+        return render(request, "auctions/listing.html", {
+            "data": data,
+            "form": form,
+            "bid_count": bid_count
+        })
 
 def login_view(request):
     if request.method == "POST":
