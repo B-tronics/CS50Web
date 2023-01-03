@@ -3,25 +3,27 @@
 {% block body %}
     <h2>Active Listings</h2>
     {% for record in data %}
-    <div class= "border rounded">
-    <table>
-        <thead>
-          <tr>
-            <td rowspan="3">
-                <div style="width: 300px;">
-                    <img src="{{ record.picture }}" alt="" style="width: 100%;">
-                </div>
-            </td>
-            <td>{{ record.title }}</td>
-          </tr>
-          <tr>
-            <td>${{ record.current_bid }}</td>
-          </tr>
-          <tr>
-            <td>{{ record.date }}</td>
-          </tr>
-        </thead>
-        </table>
-    </div>
+    <a id="listing_link" href="{% url 'listing' record.id%}">
+      <div class= "border rounded">
+      <table>
+          <thead>
+            <tr>
+              <td rowspan="3">
+                  <div style="width: 300px;">
+                      <img src="{{ record.picture }}" alt="" style="width: 100%;">
+                  </div>
+              </td>
+              <td>{{ record.title }}</td>
+            </tr>
+            <tr>
+              <td>${{ record.current_bid }}</td>
+            </tr>
+            <tr>
+              <td>{{ record.date }}</td>
+            </tr>
+          </thead>
+          </table>
+      </div>
+    </a>
     {% endfor %}
 {% endblock %}
