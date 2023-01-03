@@ -1,7 +1,16 @@
 # venv
 .venv/
+.env
 
+# IDE
+.vscode
+
+# binaries
 __pycache__/
 *.pyc
 
-.env
+# database
+*.sqlite3
+
+# migrations
+migrations/
