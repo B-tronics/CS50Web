@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h1>Listing: {{ data.title }}</h1>
+<form action="{% url 'listing' data.id%}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <small id="bidHelp" class="form-text text-muted">{{ bid_count }} bid(s) so far.</small>
+        {{ form.bid }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
