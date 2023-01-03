@@ -9,4 +9,7 @@ def create_new_bid_record(record_data: dict) -> Bids:
     return Bids(**record_data)
 
 def retrieve_data_for_index_view() -> dict:
-    return Auctions.objects.all()
+    return Auctions.objects.all()    return Auctions.objects.all()
+
+def retrieve_record_count(table: object) -> int:
+    return table.objects.all().count()
