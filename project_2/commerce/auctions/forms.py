@@ -23,3 +23,10 @@ class CreateListingForm(forms.Form):
         "class": "form-control",
         "aria-describedby": "pictureHelp",
     }))
+
+class BiddingForm(forms.Form):
+    bid = forms.IntegerField(label="", widget=forms.NumberInput(attrs={
+        "class": "form-control",
+        "aria-describedby": "startingBidHelp",
+        "placeholder": "0"
+    }))
